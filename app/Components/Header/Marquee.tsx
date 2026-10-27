@@ -1,6 +1,6 @@
 import React from "react";
 import { cacheLife } from "next/cache";
-import { ProductType } from "../../../app/Type";
+import { ProductType } from "../../Type/NavType";
 import MarqueeText from "react-marquee-text";
 
 const unitBn: Record<string, string> = {

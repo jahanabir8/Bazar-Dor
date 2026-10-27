@@ -1,4 +1,4 @@
-import NavType from "@/app/Type"
+import NavType from "@/app/Type/NavType"
 import Link from "next/link"
 
 export interface NavLinksProps {

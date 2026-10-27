@@ -1,11 +1,4 @@
-export default interface NavType{
-    id: string,
-    slug: string,
-    nameBn: string,
-    icon: string,
-} 
-
-interface categoryIconhange {
+interface Change {
   dir: string,
   pct: number
 }
@@ -18,7 +11,7 @@ interface Market {
 }
 
 export default interface ProductType {
-  id: number;
+  id: string;
   slug: string;
   nameBn: string;
   category: string;

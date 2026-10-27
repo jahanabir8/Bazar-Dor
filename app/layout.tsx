@@ -3,6 +3,7 @@ import { Noto_Serif_Bengali } from "next/font/google";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   // variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="bg-[#F0F5F0]">
           {children}
         </main>
+        <Footer />
         </body>
     </html>
   );
