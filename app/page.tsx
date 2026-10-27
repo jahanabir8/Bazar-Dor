@@ -1,11 +1,17 @@
 import Image from "next/image";
 import Header from "./Components/Header/Header";
+import HeroSection from "./Components/Hero/HeroSection";
+import PriceIncrease from "./Components/Products/PriceIncrease";
 
-export default function Home() {
+export default async function Home() {
+  const productRes = await fetch('https://openapi.programming-hero.com/api/bazardor/products')
+  const productData = await productRes.json()
+  console.log(productData);
   return (
-    <>
-      <Header />
-      <p>আজকের বাজারের দাম এক নজরে</p>
-    </>
+    <div className="">
+      <HeroSection />
+      {/* <p>আজকের বাজারের দাম এক নজরে</p> */}
+      <PriceIncrease products = {productData}/>
+    </div>
   );
 }
