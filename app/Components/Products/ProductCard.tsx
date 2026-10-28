@@ -9,7 +9,7 @@ interface PriceIncreaseProps {
 const ProductCard = ({ product }: PriceIncreaseProps) => {
   return (
     <div className="space-y-4">
-      <Link href = '/'
+      <Link href = {`/product/${product.id}`}
         key={product.id}
         className="rounded-[22px] border border-[#DCE6DD] bg-[#FAFCFA] p-5 shadow-sm transition-shadow hover:shadow-md block"
       >

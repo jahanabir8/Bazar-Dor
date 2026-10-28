@@ -23,6 +23,10 @@ export default interface ProductType {
   yesterday: number;
   lastWeek: number;
   lastMonth: number;
-  change: Change;
+  // change: Change;
+  change: {
+    dir: string,
+    pct: number
+  };
   markets: Market[];
 }
