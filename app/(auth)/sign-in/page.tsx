@@ -22,15 +22,23 @@ const SignInPage = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data: Record<string, string> = Object.fromEntries(formData.entries());
-    console.log("data ", data);
 
     const { data: resData, error } = await signIn.email({
       email: data.email,
       password: data.password,
       callbackURL: "/",
     });
+  };
+  const handleGoogleSignIn = async () => {
+    const data = await signIn.social({
+      provider: "google",
+    });
+  };
 
-    console.log("After Sign up", resData, error);
+  const handleGithubSignIn = async () => {
+    const data = await signIn.social({
+      provider: "github",
+    });
   };
 
   return (
@@ -131,6 +139,7 @@ const SignInPage = () => {
             // onClick={() =>
             //   authClient.signIn.social({ provider: "google", callbackURL: "/" })
             // }
+            onClick={handleGoogleSignIn}
             className="flex items-center justify-center gap-2 rounded-lg border py-2 text-sm"
           >
             <FcGoogle /> Google দিয়ে চালিয়ে যান
@@ -140,6 +149,7 @@ const SignInPage = () => {
             // onClick={() =>
             //   authClient.signIn.social({ provider: "github", callbackURL: "/" })
             // }
+            onClick={handleGithubSignIn}
             className="flex items-center justify-center gap-2 rounded-lg border py-2 text-sm"
           >
             <FaGithub /> GitHub দিয়ে চালিয়ে যান

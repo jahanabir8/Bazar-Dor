@@ -21,7 +21,7 @@ const HeroSection = () => {
           </p>
 
           <Link
-            href="/products"
+            href="#products"
             className="mt-6 inline-block rounded-lg bg-[#05893E] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-green-800 sm:text-base"
           >
             সব পণ্য দেখুন

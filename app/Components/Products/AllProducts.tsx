@@ -8,7 +8,7 @@ interface ProductsProps {
 
 const AllProducts = ({ products }: ProductsProps) => {
   return (
-    <div className="price-increased p-3 mb-10">
+    <div className="price-increased p-3 mb-10" id="products">
       <h2 className="text-[20px] font-bold mb-2"> সব পণ্য</h2>
       <p className="mb-3 text-[#1d271f]">
         মোট {products.length}টি পণ্য দেখানো হচ্ছে

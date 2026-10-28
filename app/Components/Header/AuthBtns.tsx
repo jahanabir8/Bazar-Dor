@@ -7,7 +7,7 @@ import { FiLogOut, FiUser } from "react-icons/fi";
 
 const AuthBtns = () => {
   const { data: session } = useSession();
-  console.log(session);
+  
   const [open, setOpen] = useState(false);
   const name = session?.user.name
   return (

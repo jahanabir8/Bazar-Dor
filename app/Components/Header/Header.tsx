@@ -4,15 +4,17 @@ import React from "react";
 import NavBar from "./NavBar";
 import AuthBtns from "./AuthBtns";
 import Marquee from "./Marquee";
+import DateBadge from "../Hero/Date";
 
-const Header = () => {
-  const date = new Date().toLocaleDateString("bn-BD", {
-    dateStyle: "full",
-  });
+const Header = async() => {
+  // const date = new Date().toLocaleDateString("bn-BD", {
+  //   dateStyle: "full",
+  // });
+  
   return (
 
     <header>
-      <div className="flex items-center justify-between gap-3 max-w-7xl mx-auto px-3 py-3 sm:px-4 sm:py-3.5">
+      <div className="flex items-center justify-between gap-3 max-w-7xl mx-auto px-3 py-3 sm:px-4 sm:py-3.5 sticky top-0 z-50">
         {/* logo */}
         <Link href="/" className="logo flex items-center gap-2 min-w-0">
           <div className="p-2 sm:p-3 bg-[#05893E] rounded shrink-0">
@@ -29,7 +31,8 @@ const Header = () => {
               বাজার দর
             </span>
             <span className="text-xs sm:text-sm text-gray-600 truncate">
-              {date}
+              {/* {date} */}
+              <DateBadge />
             </span>
           </div>
         </Link>
@@ -39,7 +42,6 @@ const Header = () => {
           <AuthBtns />
         </div>
       </div>
-
       {/* nav links */}
       <div className="border-y border-gray-300 overflow-x-auto">
         <NavBar />

@@ -1,6 +1,6 @@
 import React from "react";
 import { cacheLife } from "next/cache";
-import { ProductType } from "../../Type/NavType";
+import { ProductType } from "../../Type/ProductType";
 import MarqueeText from "react-marquee-text";
 
 const unitBn: Record<string, string> = {
@@ -56,5 +56,3 @@ const Marquee = async () => {
 };
 
 export default Marquee;
-
-

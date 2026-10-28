@@ -23,7 +23,6 @@ const SignUpPage = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data: Record<string, string> = Object.fromEntries(formData.entries());
-    console.log("data ", data);
 
     const { data: resData, error } = await signUp.email({
       name: data.name,
@@ -31,7 +30,6 @@ const SignUpPage = () => {
       password: data.password,
     });
 
-    console.log("After Sign up", resData, error);
   };
 
   const handleGoogleSignIn = async () => {
