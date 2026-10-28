@@ -2,7 +2,7 @@
 
 import { updateUser, useSession } from "@/lib/auth-client";
 // import { updateUser } from "better-auth/api";
-import Link from "next/link";
+// import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
 import { toast } from "react-toastify";
 
