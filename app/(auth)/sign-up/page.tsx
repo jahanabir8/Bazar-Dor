@@ -22,7 +22,8 @@ const SignUpPage = () => {
   const handleSignUp = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = Object.fromEntries(formData.entries());
+    // const data: Record<string, string> = Object.fromEntries(formData.entries());
+    const data = Object.fromEntries(formData.entries()) as Record<string, string>;
 
     const { data: resData, error } = await signUp.email({
       name: data.name,
