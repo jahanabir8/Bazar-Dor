@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "@/lib/auth-client";
+import { signIn, useSession } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -16,8 +16,12 @@ import {
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const SignInPage = () => {
+
+  const {data: session} = useSession()
+
   const handleSignIn = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -28,6 +32,12 @@ const SignInPage = () => {
       password: data.password,
       callbackURL: "/",
     });
+
+    if(error){
+      toast.warning('Email or Password Invalid!')
+    } else{
+      toast.success(`Logged In Successfuly!`)
+    }
   };
   const handleGoogleSignIn = async () => {
     const data = await signIn.social({

@@ -26,7 +26,13 @@ import ProductType from "@/app/Type/ProductType";
 import { notFound } from "next/navigation";
 import React from "react";
 
-const CategoryPage = async ({ params, searchParams }) => {
+const CategoryPage = async ({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ categoryId: string }>;
+  searchParams: Promise<{ sort?: string }>;
+}) => {
   const { categoryId } = await params;
   const { sort = "default" } = await searchParams;
   const res = await fetch(
@@ -72,49 +78,8 @@ const CategoryPage = async ({ params, searchParams }) => {
         {/* product cards */}
         <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product: ProductType) => {
-            return (
-              // <div key={product.id} className="rounded-2xl border bg-white p-4">
-              //   <div className="flex items-center gap-3">
-              //     <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100 text-2xl">
-              //       {product.image}
-              //     </span>
-              //     <div>
-              //       <h2 className="font-semibold">{product.nameBn}</h2>
-              //       <p className="text-xs text-gray-500">
-              //         প্রতি {product.unit}
-              //       </p>
-              //     </div>
-              //   </div>
-
-              //   <p className="mt-4 text-xs text-gray-500">আজকের দাম</p>
-              //   <div className="flex items-end justify-between">
-              //     <p className="text-lg font-bold">
-              //       {product.today.toLocaleString("bn-BD")}{" "}
-              //       <span className="text-sm font-normal">টাকা</span>
-              //     </p>
-
-              //     {product.change.dir === "up" && (
-              //       <span className="rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-600">
-              //         ▲ {product.change.pct.toLocaleString("bn-BD")}%
-              //       </span>
-              //     )}
-              //     {product.change.dir === "down" && (
-              //       <span className="rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-600">
-              //         ▼ {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
-              //       </span>
-              //     )}
-              //     {product.change.dir === "flat" && (
-              //       <span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700">
-              //         — ০.০%
-              //       </span>
-              //     )}
-              //   </div>
-              // </div>
-              <ProductCard key={product.id} product={product} />
-            );
+            return <ProductCard key={product.id} product={product} />;
           })}
-
-          {/* <ProductCard product={products} /> */}
         </div>
       </div>
     </div>

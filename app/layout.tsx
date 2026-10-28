@@ -4,6 +4,7 @@ import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
+import { ToastContainer } from "react-toastify";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   // variable: "--font-geist-sans",
@@ -28,6 +29,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+
+        <ToastContainer />
         </body>
     </html>
   );

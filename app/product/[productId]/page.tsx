@@ -12,7 +12,11 @@ const bnPrice = (n: number) =>
         maximumFractionDigits: 2,
       });
 
-const ProductPage = async ({ params }) => {
+const ProductPage = async ({
+  params,
+}: {
+  params: Promise<{ productId: string }>;
+}) => {
   const { productId } = await params;
   const res = await fetch(
     `https://openapi.programming-hero.com/api/bazardor/products/${productId}`,
@@ -38,11 +42,11 @@ const ProductPage = async ({ params }) => {
 
   // add average to each market, then sort cheapest first
   const rows = markets
-    .map((m) => ({ ...m, avg: (m.min + m.max) / 2 }))
-    .sort((a, b) => a.avg - b.avg);
+    .map((m: { min: number; max: number }) => ({ ...m, avg: (m.min + m.max) / 2 }))
+    .sort((a: { avg: number }, b: { avg: number }) => a.avg - b.avg);
 
-  const lowest = Math.min(...markets.map((m) => m.min));
-  const highest = Math.max(...markets.map((m) => m.max));
+  const lowest = Math.min(...markets.map((m: { min: number }) => m.min));
+  const highest = Math.max(...markets.map((m: { max: number }) => m.max));
   const diff = Math.abs(today - yesterday);
 
   const changeText: Record<string, string> = {
@@ -85,7 +89,9 @@ const ProductPage = async ({ params }) => {
             <p className="text-xs text-gray-500">আজকের দাম</p>
             <p className="text-3xl font-bold">{bn(today)}</p>
             <p className="text-xs text-gray-500">টাকা / {unit}</p>
-            <p className={`mt-1 text-xs font-medium ${changeColor[change.dir]}`}>
+            <p
+              className={`mt-1 text-xs font-medium ${changeColor[change.dir]}`}
+            >
               {arrows[change.dir]} {bn(Math.abs(change.pct))}%
             </p>
           </div>
@@ -136,7 +142,7 @@ const ProductPage = async ({ params }) => {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((m, index: number) => (
+                {rows.map((m: { market: string; division: string; min: number; max: number; avg: number }, index: number) => (
                   <tr
                     key={index}
                     className={index % 2 === 1 ? "bg-green-50" : "bg-white"}

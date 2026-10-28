@@ -1,16 +1,18 @@
 import NavType from "@/app/Type/NavType";
 import Link from "next/link";
 
-// export interface NavLinksProps {
-//   navlinks: NavType[];
-// }
+export interface NavLinksProps {
+  navlinks: NavType[];
+}
 
 export default function NavLinks({
   navlinks,
-  params,
-}: {
-  navlinks: NavType[];
-}) {
+  // params,
+}: NavLinksProps
+// {
+//   navlinks: NavType[];
+// }
+) {
   return (
     <div className="flex items-center gap-4 whitespace-nowrap ">
       {navlinks.map((nav, index) => {

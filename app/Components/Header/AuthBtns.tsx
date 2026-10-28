@@ -7,7 +7,7 @@ import { FiLogOut, FiUser } from "react-icons/fi";
 
 const AuthBtns = () => {
   const { data: session } = useSession();
-  
+
   const [open, setOpen] = useState(false);
   const name = session?.user.name
   return (
@@ -20,7 +20,7 @@ const AuthBtns = () => {
             className="flex items-center gap-2 text-sm"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#05893E] font-semibold text-white">
-              {name[0]}
+              {name?.[0]}
             </span>
             <span>{name}</span>
             <span className="text-xs text-gray-400">▾</span>

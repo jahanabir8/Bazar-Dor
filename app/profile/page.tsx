@@ -1,11 +1,28 @@
 'use client'
 
-import { useSession } from "@/lib/auth-client";
+import { updateUser, useSession } from "@/lib/auth-client";
+// import { updateUser } from "better-auth/api";
 import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const { data: session } = useSession();
+
+  const handleNameChange = async(e: React.SyntheticEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = Object.fromEntries(formData.entries());
+
+    const {data: resData, error} = await updateUser({
+      name: data.name
+    })
+
+    if(!error){
+      return toast.success('Users name changed successfuly!')
+    }
+  }
+
   return (
     <div className="min-h-screen bg-green-50 px-4 py-10">
       <div className="mx-auto max-w-2xl">
@@ -38,12 +55,13 @@ const ProfilePage = () => {
         <div className="mt-5 rounded-2xl border bg-white p-4 sm:p-5">
           <h2 className="font-semibold">তথ্য</h2>
 
-          <form className="mt-5 space-y-4">
+          <form className="mt-5 space-y-4" onSubmit={handleNameChange}>
             <div>
               <label className="text-sm font-medium">নাম</label>
               <input
                 type="text"
                 name="name"
+                required
                 defaultValue={session?.user.name}
                 className="mt-1 w-full rounded-lg border px-3 py-2 text-sm"
               />
