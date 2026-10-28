@@ -2,7 +2,14 @@ import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
-const client = new MongoClient(process.env.BETTER_AUTH_DB_URL!);
+const dbUrl = process.env.BETTER_AUTH_DB_URL?.trim();
+if (!dbUrl) {
+  throw new Error(
+    "BETTER_AUTH_DB_URL is missing. Add it in Vercel > Settings > Environment Variables.",
+  );
+}
+
+const client = new MongoClient(dbUrl);
 const db = client.db("Bazar-Dor");
 
 export const auth = betterAuth({

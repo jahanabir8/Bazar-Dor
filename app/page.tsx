@@ -11,7 +11,7 @@ export default async function Home() {
   cacheLife("hours");
 
   const productRes = await fetch('https://openapi.programming-hero.com/api/bazardor/products')
-  const productData = await productRes.json()
+  const productData = productRes.ok ? await productRes.json() : []
   // console.log(productData);
   return (
     <div className=" max-w-7xl mx-auto ">

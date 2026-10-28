@@ -1,6 +1,6 @@
 'use client'
 
-import { updateUser, useSession } from "@/lib/auth-client";
+import { signOut, updateUser, useSession } from "@/lib/auth-client";
 // import { updateUser } from "better-auth/api";
 // import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
@@ -47,7 +47,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <button className="flex shrink-0 items-center gap-1.5 rounded-lg border border-red-500 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50">
+          <button onClick={() => signOut()} className="flex shrink-0 items-center gap-1.5 rounded-lg border border-red-500 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50">
             <FiLogOut /> সাইন আউট
           </button>
         </div>

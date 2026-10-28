@@ -43,6 +43,8 @@ const CategoryPage = async ({
 
   const data = await res.json();
 
+  if (!Array.isArray(data) || data.length === 0) notFound();
+
   // category info comes from the first product
   const { categoryNameBn, categoryIcon } = data[0];
 
